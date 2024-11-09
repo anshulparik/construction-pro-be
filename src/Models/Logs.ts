@@ -15,4 +15,4 @@ const logsSchema = new mongoose.Schema({
   isComplete: { type: Boolean, default: false },
 });
 
-module.exports = mongoose.model("Logs", logsSchema);
+export const Logs = mongoose.models.Logs || mongoose.model("Logs", logsSchema);

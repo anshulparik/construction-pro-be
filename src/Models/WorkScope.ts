@@ -7,4 +7,5 @@ const workScopeSchema = new mongoose.Schema({
   variance: { type: Number, required: true },
 });
 
-module.exports = mongoose.model("WorkScope", workScopeSchema);
+export const WorkScope =
+  mongoose.models.WorkScope || mongoose.model("WorkScope", workScopeSchema);
