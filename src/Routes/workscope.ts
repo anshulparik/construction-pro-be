@@ -4,7 +4,7 @@ import {
   deleteWorkScope,
   fetchWorkScopes,
   updateWorkScope,
-} from "../Controllers/workspace";
+} from "../Controllers/workscope";
 
 const router = Router();
 

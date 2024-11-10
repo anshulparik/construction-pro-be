@@ -3,7 +3,7 @@ import express from "express";
 import { dbConnect } from "./db/db";
 import { router as locationRouter } from "./Routes/location";
 import { router as logsRouter } from "./Routes/logs";
-import { router as workScopeRouter } from "./Routes/workspace";
+import { router as workScopeRouter } from "./Routes/workscope";
 
 dotenv.config();
 

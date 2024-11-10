@@ -32,10 +32,18 @@ const createWorkScope = async (req: Request, res: Response): Promise<void> => {
 const updateWorkScope = async (req: Request, res: Response): Promise<void> => {
   try {
     const id = req?.params?.id;
-    const data = req?.body;
-    const workScope = await WorkScope?.findByIdAndUpdate(id, data, {
-      new: true,
-    });
+    const { name, duration, displayTime, variance } = req?.body;
+    if (!name && !duration && !displayTime && !variance) {
+      res.status(400).json({ msg: "Please provide valid fields to update!" });
+      return;
+    }
+    const workScope = await WorkScope?.findByIdAndUpdate(
+      id,
+      { name, duration, displayTime, variance },
+      {
+        new: true,
+      }
+    );
     res.status(200).json({ workScope });
   } catch (error) {
     res.status(500).json({ error });

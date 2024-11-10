@@ -39,6 +39,15 @@ const fetchLogsByWorkScopeId = async (
 const completeLog = async (req: Request, res: Response): Promise<void> => {
   try {
     const id = req?.params?.id;
+    const foundLog = await Logs?.findById(id);
+
+    if (foundLog?.isComplete) {
+      res.status(400).json({
+        msg: `Log is already complete!`,
+      });
+      return;
+    }
+    
     const log = await Logs?.findByIdAndUpdate(
       id,
       { isComplete: true },
