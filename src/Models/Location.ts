@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const locationSchema = new mongoose.Schema(
   {
-    name: { type: String, required: true },
+    name: { type: String, required: true, unique: true },
     status: {
       type: String,
       enum: ["complete", "incomplete"],
