@@ -105,12 +105,16 @@ const displayLogs = async (req: Request, res: Response): Promise<void> => {
       const displayEndTime = new Date(displayStartTimeIST);
       displayEndTime.setDate(displayEndTime.getDate() + durationDays);
       displayEndTime.setHours(displayEndTime.getHours() + varianceHours);
-      
-      return now >= displayStartTimeIST && now <= displayEndTime;
+
+      const istOffset = 5.5 * 60;
+      const istTime = new Date(now.getTime() + istOffset * 60 * 1000);
+
+      return istTime >= displayStartTimeIST && istTime <= displayEndTime;
     });
 
-    res.status(200).json(filteredLogs);
+    res.status(200).json({ filteredLogs });
   } catch (error) {
+    console.log(error, "====");
     res.status(500).json({ error });
   }
 };

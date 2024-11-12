@@ -11,7 +11,7 @@ import {
 const router = Router();
 
 router.route("/").get(fetchLogs)
-router.route("/diplay").get(displayLogs);
+router.route("/display").get(displayLogs);
 router.route("/:id").get(fetchLogsByLocationId).patch(completeLog).delete(deleteLog);
 router.route("/workscope/:id").get(fetchLogsByWorkScopeId);
 
